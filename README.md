@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Parivarta-Calendar
+I've designed a calendar wayyy more accurate (astronomically) than Gregorian calendar
+>>>>>>> f5827a41363c7abf6477cd70db4e2286e7f0462f
