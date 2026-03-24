@@ -13,7 +13,7 @@ const WEEK_LABELS = Array.from({ length: 23 }, (_, index) =>
   `W${String(index + 1).padStart(2, '0')}`
 );
 
-function ParivartaCalendar() {
+function ParivartaCalendar({ theme, onToggleTheme }) {
   const [utcDate, setUtcDate] = useState(getTodayUtcDate);
   const [viewYear, setViewYear] = useState(() => gregorianUtcToParivarta(getTodayUtcDate()).year);
 
@@ -29,7 +29,42 @@ function ParivartaCalendar() {
   return (
     <section className="parivarta-calendar">
       <header className="calendar-hero">
-        <p className="kicker">Solar Model</p>
+        <div className="hero-top">
+          <p className="kicker">Solar Model</p>
+          <button
+            type="button"
+            className={`theme-toggle theme-toggle-${theme}`}
+            onClick={onToggleTheme}
+            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            aria-pressed={theme === 'dark'}
+            title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          >
+            <span className="theme-toggle-copy">
+              <strong>{theme === 'light' ? 'Light' : 'Dark'}</strong>
+              <span>Mode</span>
+            </span>
+            <span className="theme-toggle-track" aria-hidden="true">
+              <span className={`theme-toggle-icon ${theme === 'light' ? 'is-active' : ''}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4.5" />
+                  <line x1="12" y1="1.5" x2="12" y2="4" />
+                  <line x1="12" y1="20" x2="12" y2="22.5" />
+                  <line x1="4.22" y1="4.22" x2="6" y2="6" />
+                  <line x1="18" y1="18" x2="19.78" y2="19.78" />
+                  <line x1="1.5" y1="12" x2="4" y2="12" />
+                  <line x1="20" y1="12" x2="22.5" y2="12" />
+                  <line x1="4.22" y1="19.78" x2="6" y2="18" />
+                  <line x1="18" y1="6" x2="19.78" y2="4.22" />
+                </svg>
+              </span>
+              <span className={`theme-toggle-icon ${theme === 'dark' ? 'is-active' : ''}`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.2A8.8 8.8 0 1 1 11.8 3a6.9 6.9 0 0 0 9.2 9.2z" />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
         <h1>Parivarta Calendar</h1>
         <p>
           Epoch: UTC day containing the March equinox of 2000 CE (implemented as{' '}
