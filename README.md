@@ -9,6 +9,8 @@ The app is built for clarity and interaction: you can choose a UTC date, inspect
 - Converts a UTC Gregorian date into a Parivarta date string like `12-Arocha-08`
 - Displays year metadata including leap-year status, day of year, week-cycle day, and absolute day index
 - Renders the full selected Parivarta year as period cards with per-day week labels
+- Lets you save Gregorian birthdays and automatically mark their occurrence inside whichever Parivarta year you are viewing
+- Shows a step-by-step explanation of how a Gregorian date or birthday occurrence is converted into Parivarta
 - Lets you jump between years or return to the selected date's year
 - Includes persistent light/dark theme switching with system-theme fallback
 
@@ -31,6 +33,8 @@ All date conversion logic lives in [`src/utils/parivartaCalendar.js`](src/utils/
 
 - `Gregorian Input (UTC)`: choose a date and move one UTC day backward or forward
 - `Converted Date`: view the Parivarta representation and related metadata
+- `Birthday Markers`: store birthdays and automatically convert the occurrence that falls inside the displayed Parivarta year
+- `How To Calculate It`: inspect the exact conversion steps from Gregorian UTC date to Parivarta year, period, day, and week-cycle label
 - `Parivarta Year`: browse all periods and highlight the selected day
 - `Theme Toggle`: switch between light and dark mode while preserving the same palette
 
@@ -122,6 +126,8 @@ The theme system is designed to behave predictably:
 ## Development Notes
 
 - The displayed input is always UTC-based
+- Birthday markers are recurring Gregorian birthdays projected automatically into the displayed Parivarta year
+- Birthday entries are stored in browser local storage under `parivarta.birthdays`
 - The selected day is highlighted inside the generated year view
 - The repository includes an older `Calander` component that appears to be a legacy or experimental calendar view and is not the main interface used by the app today
 
